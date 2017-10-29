@@ -24,7 +24,11 @@ img {
 }
 
 p {
-	float: left;
+
 	margin-right: 30px;
 	font-weight: bold;
+}
+
+.item {
+	float: left;
 }
