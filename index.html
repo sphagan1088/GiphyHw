@@ -3,36 +3,24 @@
 
 <head>
     <title>GIPHY HOMEWORK</title>
-<!--     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
+
 <body>
-	<div class="container">
-		
-
-		<div id="buttons-view"></div>
-
-		<div id="gifs-view"></div>
-		<form style="float: right;" id="nintendo-form">
-			<label for="nintendo-input">Add Your Favorite Nintendo Characters</label>
-			<input type="text" id="nintendo-input"> <br>
-
-			<input id="add-nintendo" type="submit" value="Add Your Favorite Nintendo Character">
-		</form>
-		<script
-		  src="https://code.jquery.com/jquery-3.2.1.min.js"
-		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		  crossorigin="anonymous"></script>
-		<script src="./assets/javascript/app.js" type="text/javascript"></script>
-
-	</div>
-
-
-
-
+    <div class="container">
+        <div id="buttons-view"></div>
+        <form id="nintendo-form">
+            <label for="nintendo-input">Add Your Favorite Nintendo Characters</label>
+            <input type="text" id="nintendo-input">
+            <br>
+            <button id="add-nintendo" type="button" class="btn btn-primary btn-md">Submit</button>
+        </form>
+        <div id="gifs-view"></div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="./assets/javascript/app.js" type="text/javascript"></script>
+    </div>
 </body>
-
-
-
-
 
 </html>

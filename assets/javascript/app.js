@@ -25,6 +25,8 @@ function displayGifs() {
 		method: "GET"
 	}).done(function(response) {
 
+
+
 		var results = response.data;
 
 		$("#gifs-view").empty();
@@ -40,13 +42,18 @@ function displayGifs() {
 
 		var p = $("<p>").text("Rating:" + rating);
 
-		var personImage = $("<img>");
+		var gifImage = $("<img>");
 
-		personImage.attr("src", results[i].images.fixed_height.url);
+		gifImage.attr("src", results[i].images.fixed_height_still.url);
+		gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+		gifImage.attr("data-animate", results[i].images.fixed_height.url);
+		gifImage.attr("data-state", "still");
+		gifImage.addClass("images");
+
 
 		nintendoDiv.prepend(p);
 		
-		nintendoDiv.prepend(personImage);
+		nintendoDiv.prepend(gifImage);
 
 		
 
@@ -58,6 +65,9 @@ function displayGifs() {
 	})
 }
 
+
+
+
 //function to render buttons 
 function renderButtons() {
 
@@ -68,7 +78,7 @@ function renderButtons() {
 	for(var i = 0; i < topics.length; i++) {
 
 		//creates buttons
-		var a = $("<button>");
+		var a = $("<button type='button' class='btn btn-primary btn-md'>");
 
 		a.addClass("ninCharacter");
 
@@ -92,10 +102,18 @@ $("#add-nintendo").on("click", function(event) {
 })
 
 $(document).on("click", ".ninCharacter", displayGifs);
+$(document).on("click", ".images", function() {
 
+		var state = $(this).attr("data-state");
 
-
-// $(document).on("click", ".topic", alertTopicName);
+		if( state === "still") {
+			$(this).attr("src", $(this).data("animate"));
+			$(this).attr("data-state", "animate");
+		} else {
+			$(this).attr("src", $(this).data("still"));
+			$(this).attr("data-state", "still");
+		}
+	})
 
 
 renderButtons();
