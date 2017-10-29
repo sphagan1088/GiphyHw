@@ -14,4 +14,89 @@
 
 
 //array of Nintendo characters that will be used to create buttons
-var topics = ["Mario", "Luigi", "Donkey Kong", "Bowser", "Yoshi", "Zelda", "Wario", "Kirby", "Diddy Kong" "Link"];
+var topics = ["Mario", "Luigi", "Donkey Kong", "Bowser", "Yoshi", "Link"];
+
+function displayGifs() {
+	var ninCharacter = $(this).attr("data-name");
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + ninCharacter + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response) {
+
+		var results = response.data;
+
+		$("#gifs-view").empty();
+
+
+		for(var i = 0; i < results.length; i++) {
+
+		
+		var nintendoDiv = $("<div class='item'>");
+		console.log(nintendoDiv);
+
+		var rating = results[i].rating;
+
+		var p = $("<p>").text("Rating:" + rating);
+
+		var personImage = $("<img>");
+
+		personImage.attr("src", results[i].images.fixed_height.url);
+
+		nintendoDiv.prepend(p);
+		
+		nintendoDiv.prepend(personImage);
+
+		
+
+		$("#gifs-view").prepend(nintendoDiv);
+
+		console.log(response);
+		console.log(queryURL);
+	}
+	})
+}
+
+//function to render buttons 
+function renderButtons() {
+
+	//deletes buttons when adding new ones
+	$("#buttons-view").empty();
+
+	//loop for the array 
+	for(var i = 0; i < topics.length; i++) {
+
+		//creates buttons
+		var a = $("<button>");
+
+		a.addClass("ninCharacter");
+
+		a.attr("data-name", topics[i]);
+
+		a.text(topics[i]);
+
+		$("#buttons-view").append(a);
+	}
+}
+
+$("#add-nintendo").on("click", function(event) {
+
+	event.preventDefault();
+
+	var ninCharacter = $("#nintendo-input").val().trim();
+
+	topics.push(ninCharacter);
+
+	renderButtons();
+})
+
+$(document).on("click", ".ninCharacter", displayGifs);
+
+
+
+// $(document).on("click", ".topic", alertTopicName);
+
+
+renderButtons();
+
